@@ -1,0 +1,131 @@
+:root {
+    --background: #151515;
+    --text: #f0f0f0;
+    --firstcontent: #323232;
+    --secondcontent: #505050;
+    --accent: #228b45;
+    --success: #23d54d5e;
+    --warning: #f3d52c5e;
+    --error: #df52605e;
+    --hover: 150%;
+    --active: 175%
+}
+body {
+    padding: 25px;
+    padding-top: 10px;
+    font-family: 'Work Sans', sans-serif;
+    color: var(--text);
+    background-color: var(--background);
+}
+a {
+    color: var(--text);
+}
+table > tbody > tr > *, table > tr > * {
+    padding: 10px;
+}
+table > tbody >tr {
+    background-color: var(--secondcontent);
+    border-radius: 8px;
+}
+table > tbody > tr > td > input[type="checkbox"] {
+    width: -webkit-fill-available;
+    width: -moz-fill-available;
+}
+table > tbody > tr > td > img {
+    max-width: 85px;
+    max-height: 85px;
+}
+.center {
+    width: fit-content;
+    width: -moz-fit-content;
+    padding: 25px;
+    padding-top: 10px;
+    background-color: var(--firstcontent);
+    border-radius: 16px;
+    max-width: 85vw;
+    overflow: auto;
+}
+.centerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#history {
+    max-height: 10vh;
+    background-color: var(--secondcontent);
+    padding: 15px;
+    border-radius: 16px;
+    overflow: auto;
+}
+#intelliLog {
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--firstcontent);
+}
+div[data-step] {
+    transition: opacity 0.25s ease-in-out;
+    opacity: 0;
+    display: none;
+}
+button, input[type="text"] {
+    appearance: none;
+    padding: 10px;
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    border-radius: 16px;
+    border: 1px solid var(--text);
+    width: -webkit-fill-available;
+    width: -moz-fill-available;
+    transition: filter 0.15s ease-in-out
+}
+button {
+    background-color: var(--accent);
+}
+input[type="text"] {
+    background-color: var(--secondcontent);
+}
+button:hover, input:hover {
+    filter: brightness(var(--hover));
+    cursor: pointer;
+}
+button:active, input:hover {
+    filter: brightness(var(--active))
+}
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+}
+.tableContainer {
+    display: flex;justify-content: center;overflow: scroll;max-height: 50vh;
+}
+.bottomClick {
+    text-decoration: underline;
+    margin-right: 10px;
+}
+.bottomClick:hover {
+    cursor: pointer;
+}
+.dialog {
+    position: absolute;
+    z-index: 5;
+    top: 5vh;
+    background-color: var(--secondcontent);
+    padding: 15px;
+    border-radius: 16px;
+    max-width: 60vw;
+}
+.dialogContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(16px) brightness(50%);
+    content: "";
+    z-index: 1;
+    transition: opacity 0.2s;
+    opacity: 0;
+    display: none;
+    justify-content: center;
+}

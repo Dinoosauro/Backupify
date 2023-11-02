@@ -3,7 +3,6 @@ module.exports = async (playlist, token, user) => {
     async function createPlaylist() {
         tryCount++;
         if (tryCount > 5) return false;
-        console.log(`https://api.spotify.com/v1/users/${user}/playlists`);
         let createPlaylist = await fetch(`https://api.spotify.com/v1/users/${user}/playlists`, {
             headers: {
                 "Authorization": `Bearer ${token}`,

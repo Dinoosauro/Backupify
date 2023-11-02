@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>Backupify</h1>
+    <i>Easily create a copy of your Spotify playlists</i><br><br>
+    <div class="centerContainer" style="height: 100%;">
+        <div class="center" style="height: 100%;">
+            <h2>Let's start!</h2>
+    <button id="spotiConnect">Connect to Spotify API</button><br><br>
+    <i>Everything will be done on your device, and connections will be made only to Spotify servers to create the new playlist</i>
+        </div>
+    </div>
+    <script src="./js/commonWeb.js"></script>
+    <script>
+        document.getElementById("spotiConnect").addEventListener("click", () => {
+            let info = {
+                client: "bdea9cfc72e84b9190818f99ef5c4309",
+            }
+            window.location.href = `https://accounts.spotify.com/authorize?client_id=${info.client}&response_type=token&redirect_uri=${encodeURIComponent(`http://localhost:5600/next.html`)}&scope=playlist-read-private%20playlist-modify-private`;
+        })
+    </script>
+</body>

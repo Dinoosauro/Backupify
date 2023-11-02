@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h1>Backupify</h1>
+    <i>Easily create a copy of your Spotify playlists</i><br><br>
+    <div class="centerContainer">
+        <div class="center" id="evertythingContainer">
+            <div data-step="choose" style="display: block; opacity: 1;">
+                <h2>Choose the playlists to backup:</h2>
+                <div style="display: flex;">
+                    <input placeholder="Write a Playlist ID" id="customId" type="text">
+                    <button style="width: min-content; margin-left: 15px;" id="addCustom">Add</button>
+                </div>
+                <br>
+                <div class="tableContainer" id="fetchMore">
+                    <table>
+                        <tbody id="playlistContainer">
+                            <tr>
+                                <th>Backup:</th>
+                                <th>Image:</th>
+                                <th>Name:</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><br><br>
+                <button id="goToName">Continue with the backup</button>
+            </div>
+            <div data-step="name">
+                <h2>Choose the playlist file name:</h2>
+                <div class="tableContainer">
+                    <table>
+                        <tbody id="playlistName">
+                            <tr>
+                                <th>Image:</th>
+                                <th>Old Name:</th>
+                                <th>New Playlist Name:</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><br><br>
+                <input type="checkbox" style="width: auto; height: auto; margin-right: 10px;" id="saveSelection"><label for="saveSelection">Automatically select these playlist next time</label>
+                <br><br>
+                <div style="display: flex;">
+                    <button id="startProcess" style="margin-right: 5px;">Start playlist backup</button>
+                    <button id="goBack" style="margin-left: 5px; background-color: var(--secondcontent);">Go back to selection screen</button>
+                </div>
+            </div>
+            <div data-step="convert">
+                <h2 id="startBackup">Backup started</h2>
+                <div id="intelliLog">
+                    <h3 id="intelliUpdate">Starting backup...</h3>
+                    <div id="history">
+                        <l>Starting backup...</l><br>
+                    </div>
+                </div><br><br>
+                <button id="backStart">Go back</button>
+            </div><br><br>
+            <div style="display: flex; align-items: center; flex-direction: column;">
+                <l>Data provided by</l><br>
+                <img src="./spotiLogo/logo.png" style="max-height: 60px; object-fit: contain;"><br>
+                <i>Click on the playlist name to open it in a new window</i>    
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="./js/commonWeb.js"></script>
+    <script src="./bundle.js"></script>
+</body>
