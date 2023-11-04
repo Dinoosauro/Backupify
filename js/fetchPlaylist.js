@@ -12,7 +12,7 @@ module.exports = async (token, playlist) => {
         });
         let json = await songs.json();
         if (songs.status.toString().startsWith("2")) {
-            for (let item of json.items) trackArray.push(item.track.uri);
+            trackArray.push(...json.items.map(e => {return e.track.uri}));
             return ((json.next ?? "") !== "") ? await nextLoad(json.next, true) : trackArray;
         } else {
             errorCount++;

@@ -12,9 +12,7 @@ module.exports = async (url, token) => {
         });
         let json = await req.json();
         if (req.status.toString().startsWith("2")) {
-            let formattedItems = { next: json.next, arr: [] };
-            for (let item of json.items) formattedItems.arr.push({ id: item.id, img: item.images[0].url, name: item.name });
-            return formattedItems;
+            return { next: json.next, arr: json.items.map(e => {return {id: e.id, img: e.images[0].url, name: e.name}}) };
         } else return await timeout();
     }
     function timeout() {

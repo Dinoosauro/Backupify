@@ -129,3 +129,6 @@ input[type="checkbox"] {
     display: none;
     justify-content: center;
 }
+#evertythingContainer {
+    transition: background-color 0.15s ease-in-out;
+}
