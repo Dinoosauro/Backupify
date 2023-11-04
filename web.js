@@ -3,6 +3,7 @@ async function start() {
     const getPlaylist = require("./js/fetchPlaylistDetails");
     let token = window.location.hash.substring(window.location.hash.indexOf("access_token=")).replace("access_token=", "");
     token = token.substring(0, token.indexOf("&"));
+    history.pushState(null, "", "next.html");
     let result = await fetchPlaylist("https://api.spotify.com/v1/me/playlists?limit=50", token);
     function parseResult(json, prepend) {
         for (let item of json.arr) {
