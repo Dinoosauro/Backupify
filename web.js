@@ -1,4 +1,4 @@
-async function start() {
+(async ()=>{
     const fetchPlaylist = require("./js/fetchUserLib");
     const getPlaylist = require("./js/fetchPlaylistDetails");
     let token = window.location.hash.substring(window.location.hash.indexOf("access_token=")).replace("access_token=", "");
@@ -108,7 +108,7 @@ async function start() {
         await opacityRemove(document.querySelector("[data-step=convert]"));
         opacityAdd(document.querySelector("[data-step=choose]"));
     })
-}
+})();
 console.intelliLog = (msg, type, item) => {
     let symbolRef = {
         info: {
@@ -134,4 +134,3 @@ console.intelliLog = (msg, type, item) => {
     l.textContent = `${symbolRef[type].emoji} | ${msg}${(item ?? "") !== "" ? ` | ${item}` : ""}`;
     document.getElementById("history").append(l, document.createElement("br"));
 }
-start();
