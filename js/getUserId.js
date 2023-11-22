@@ -1,3 +1,4 @@
+// Async function that returns the User ID
 module.exports = async (token) => {
     let maxTry = 0;
     async function getUser() {
