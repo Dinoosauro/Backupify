@@ -25,5 +25,6 @@ You can choose the playlists to duplicate by creating a ```playlist.json``` file
 ```
 ### Passing playlist directly from the script
 If you don't have a ```playlist.json``` file, the script will use the ```playlist``` object the ```clientOptions``` variable. You can add there playlist IDs and names by following the same syntax as a JSON file.
-## Privacy
+
+## Privacy
 Everything is done in your browser. The only connections made from Backupify are to Google Fonts, for displaying the 'Work Sans' font, and to Spotify, to get, create and add items to the playlists. 
