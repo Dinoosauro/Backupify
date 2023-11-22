@@ -20,6 +20,7 @@
         document.getElementById("spotiConnect").addEventListener("click", () => {
             let info = {
                 client: "bdea9cfc72e84b9190818f99ef5c4309",
+                host: "https://dinoosauro.github.io" ? "https://dinoosauro.github.io/Backupify" : window.location.origin,
             }
             window.location.href = `https://accounts.spotify.com/authorize?client_id=${info.client}&response_type=token&redirect_uri=${encodeURIComponent(`${window.location.origin}/next.html`)}&scope=playlist-read-private%20playlist-modify-private`;
         })

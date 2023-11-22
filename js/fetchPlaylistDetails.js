@@ -1,3 +1,4 @@
+// Async function that gets info about a single playlist
 module.exports = async(token, id) => {
     let numberTried = 0;
     async function getPlaylistDetail() {
@@ -11,7 +12,7 @@ module.exports = async(token, id) => {
             }
         });
         let json = await getInfo.json();
-        return getInfo.status.toString().startsWith("2") ? {arr: [{name: json.name, img: json.images[0].url, id: json.id}]} : await retry();
+        return getInfo.status.toString().startsWith("2") ? {arr: [{name: json.name, img: json.images[0].url, id: json.id}]} : await retry(); // Return only the necessary fields: ID, Image, Playlist Name
     }
     function retry() {
         return new Promise((resolve) => {

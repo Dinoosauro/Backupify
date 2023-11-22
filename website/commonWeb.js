@@ -1,4 +1,4 @@
-let theme = {
+let theme = { // The theme object, with the hexadecimal values of the colors
     applied: "dark",
     dark: {
         background: "#151515",
@@ -14,19 +14,19 @@ let theme = {
         accent: "#48e57d"
     }
 }
-function applyTheme(type) {
+function applyTheme(type) { // Change default theme
     theme.applied = type;
     for (let item in theme[type]) document.documentElement.style.setProperty(`--${item}`, theme[type][item]);
-    localStorage.setItem("Backupify-Theme", type);
+    localStorage.setItem("Backupify-Theme", type); // Store the new theme
 }
-(localStorage.getItem("Backupify-Theme") ?? "") !== "" ? applyTheme(localStorage.getItem("Backupify-Theme")) : window.matchMedia(' (prefers-color-scheme: dark)').matches ? applyTheme("dark") : applyTheme("light");
-let changeTheme = document.createElement("l");
+(localStorage.getItem("Backupify-Theme") ?? "") !== "" ? applyTheme(localStorage.getItem("Backupify-Theme")) : window.matchMedia(' (prefers-color-scheme: dark)').matches ? applyTheme("dark") : applyTheme("light"); // If there's a custom theme saved, apply it. Otherwise, use browser's default settings.
+let changeTheme = document.createElement("l"); // Create a label to change theme
 changeTheme.classList.add("bottomClick");
 changeTheme.textContent = "Change theme";
 changeTheme.addEventListener("click", () => {
     applyTheme(theme.applied === "dark" ? "light" : "dark");
 })
-function opacityRemove(div) {
+function opacityRemove(div) { // Add an opacity transition: from 1 to 0
     return new Promise((resolve) => {
         div.style.opacity = 0;
         setTimeout(() => {
@@ -35,7 +35,7 @@ function opacityRemove(div) {
         }, 270);
     })
 }
-function opacityAdd(div, type) {
+function opacityAdd(div, type) { // Add an opacity transition: from 0 to 1
     return new Promise((resolve) => {
         div.style.display = type ?? "block";
         setTimeout(() => {
@@ -44,7 +44,8 @@ function opacityAdd(div, type) {
         }, 15);
     })
 }
-let privacyContainer = document.createElement("div");
+// The dialog that'll contain privacy info
+let privacyContainer = document.createElement("div"); 
 privacyContainer.classList.add("dialogContainer");
 let privacy = document.createElement("div");
 privacy.classList.add("dialog");
@@ -59,10 +60,12 @@ closePrivacy.addEventListener("click", () => {opacityRemove(privacyContainer)});
 privacy.append(h2, privacyText, document.createElement("br"), document.createElement("br"), closePrivacy, document.createElement("br"), document.createElement("br"));
 privacyContainer.append(privacy);
 document.body.append(privacyContainer);
+// The label that'll permit the user to read privacy info
 let privacyClick = document.createElement("l");
 privacyClick.classList.add("bottomClick");
 privacyClick.textContent = "Privacy notice";
 privacyClick.addEventListener("click", () => {opacityAdd(privacyContainer, "flex")});
+// Add info about Spotify trademark
 let spotifyTrademark = document.createElement("l");
 spotifyTrademark.textContent = "Spotify and the Spotify logo are trademark of Spotify, that is not affiliated in any way with Backupify."
 document.body.append(document.createElement("br"), document.createElement("br"), document.createElement("br"), spotifyTrademark, document.createElement("br"), document.createElement("br"), changeTheme, privacyClick);
