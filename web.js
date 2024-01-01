@@ -95,8 +95,15 @@
             document.getElementById("evertythingContainer").style.backgroundColor = "var(--success)";
         });
     });
+    function parseUserSpotify(val) {
+        if (val.indexOf("spotify") === -1) return val; // A real playlist ID
+        if (val.indexOf("?") !== -1) val = val.substring(0, val.indexOf("?")); // Delete eventual search queries from the provided URL
+        if (val.indexOf("/") !== -1) val = val.substring(val.lastIndexOf("/") + 1); // Delete the eventual Spotify webpage URL
+        if (val.indexOf(":") !== -1) val = val.substring(val.lastIndexOf(":") + 1); // Delete the eventual part before the Playlist ID in the "spotify:playlist:id" scheme
+        return val.trim(); 
+    }
     document.getElementById("addCustom").addEventListener("click", async () => { // Backup a playlist by providing a custom ID in the "choose the playlists" section
-        let getResult = await getPlaylist(token, document.getElementById("customId").value); // Get the playlist info
+        let getResult = await getPlaylist(token, parseUserSpotify(document.getElementById("customId").value)); // Get the playlist info
         if (getResult) parseResult(getResult, true); // And, if it's a valid playlist, add it at the top of the table
     });
     function savePlaylist() { // Save the playlist selection in the DOM
